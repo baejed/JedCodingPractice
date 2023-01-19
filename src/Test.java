@@ -8,12 +8,42 @@ public class Test {
 
     public static void main(String args[]) throws AWTException, InterruptedException {
 
-        PointerInfo pointerInfo;
-        Point mouseCoordinates;
-        Robot keyPresser = new Robot();
+        Robot robot = new Robot();
 
-        keyPresser.keyPress(18);
-        keyPresser.keyPress(115);
+        robot.keyPress(KeyEvent.VK_WINDOWS);
+        robot.keyPress(68);
+
+        robot.keyRelease(KeyEvent.VK_WINDOWS);
+        robot.keyRelease(68);
+
+        robot.keyPress(17);
+        robot.keyPress(16);
+        robot.keyPress(27);
+        robot.keyRelease(17);
+        robot.keyRelease(16);
+        robot.keyRelease(27);
+
+        robot.mouseMove(192, 684);
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+
+        robot.mouseMove(272, 124);
+        Thread.sleep(1000);
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+
+        Thread.sleep(500);
+        robot.mouseMove(188, 125);
+        robot.keyPress(17);
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        robot.keyRelease(17);
+
+
+
+        System.exit(0);
 
     }
 
