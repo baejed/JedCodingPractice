@@ -1,40 +1,21 @@
 import org.w3c.dom.ls.LSOutput;
 
+import java.awt.*;
+import java.awt.event.*;
 import java.util.Scanner;
 
-public class Test{
+public class Test {
 
-    public static void main(String args[]){
+    public static void main(String args[]) throws AWTException, InterruptedException {
 
-        char[] letters = new char[10];
+        PointerInfo pointerInfo;
+        Point mouseCoordinates;
+        Robot keyPresser = new Robot();
 
-        System.out.println(letters[2]);
+        keyPresser.keyPress(18);
+        keyPresser.keyPress(115);
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //    public static boolean isValid(String s) {
@@ -79,10 +60,10 @@ public class Test{
 
         int[][] empty = {}, twoDArray = new int[n][m];
 
-        if(m*n < original.length) return empty;
+        if (m * n < original.length) return empty;
 
-        for(int i = 0, column = 0, row = 0; i < original.length; i++, row++){
-            if(row == n){
+        for (int i = 0, column = 0, row = 0; i < original.length; i++, row++) {
+            if (row == n) {
                 column++;
                 row = 0;
             }
@@ -95,11 +76,11 @@ public class Test{
 
     public static int arrangeCoins(int n) {
 
-        int rowCounter = 0, rowBuilder = (int)Math.ceil(n/2.0);
+        int rowCounter = 0, rowBuilder = (int) Math.ceil(n / 2.0);
 
-        for(int i = 0; i < Math.ceil(n/2.0); i++, rowBuilder--, rowCounter++){
+        for (int i = 0; i < Math.ceil(n / 2.0); i++, rowBuilder--, rowCounter++) {
             n -= rowBuilder;
-            if(n < 0) break;
+            if (n < 0) break;
         }
 
         return rowCounter;
@@ -112,28 +93,28 @@ public class Test{
         nums += n;
 
 
-        do{
+        do {
 
             num = 0;
 
-            for(i = 0; i < nums.length(); i++){
-                num += Math.pow((nums.charAt(i) - '0'),2);
+            for (i = 0; i < nums.length(); i++) {
+                num += Math.pow((nums.charAt(i) - '0'), 2);
             }
 
-            if(num > 100) return false;
+            if (num > 100) return false;
 
-        }while(num != 1);
+        } while (num != 1);
 
         return true;
     }
 
     public static boolean isSubsequence(String s, String t) {
 
-        for(int i = 0, j = 0; i < s.length(); i++){
+        for (int i = 0, j = 0; i < s.length(); i++) {
 
-            for(; j < t.length(); j++){
+            for (; j < t.length(); j++) {
 
-                if(s.charAt(i) == t.charAt(j)){
+                if (s.charAt(i) == t.charAt(j)) {
                     continue;
                 }
 
@@ -145,7 +126,7 @@ public class Test{
 
     }
 
-    public static int[] plusOne(int[] digits){
+    public static int[] plusOne(int[] digits) {
 
         int arrToInt = 0;
         int zeros = 1, newArrLength;
@@ -153,24 +134,23 @@ public class Test{
         String digitCounter = "";
 
 
+        for (int i = digits.length - 1; i >= 0; i--) {
 
-        for(int i = digits.length - 1; i >= 0; i--){
-
-            arrToInt += digits[i] * (zeros*10);
-            zeros *= (zeros*10);
+            arrToInt += digits[i] * (zeros * 10);
+            zeros *= (zeros * 10);
 
         }
 
         arrToInt++;
         newArrLength = digits.length;
-        digitCounter += arrToInt/10;
+        digitCounter += arrToInt / 10;
 
-        if(newArrLength != digits.length) answer = new int[newArrLength];
+        if (newArrLength != digits.length) answer = new int[newArrLength];
         else answer = new int[digits.length];
 
-        for(int i = answer.length - 1; i >= 0; i--){
+        for (int i = answer.length - 1; i >= 0; i--) {
 
-            answer[i] = arrToInt%10;
+            answer[i] = arrToInt % 10;
             arrToInt /= 10;
 
         }
@@ -203,13 +183,13 @@ public class Test{
 
     public static int[] twoSum(int[] nums, int target) {
 
-        int[] answer = {0,0};
+        int[] answer = {0, 0};
 
-        for(int i = 0; i < nums.length - 1; i++){
+        for (int i = 0; i < nums.length - 1; i++) {
 
-            for(int j = i + 1; j < nums.length; j++){
+            for (int j = i + 1; j < nums.length; j++) {
 
-                if((nums[i] + nums[j]) == target){
+                if ((nums[i] + nums[j]) == target) {
 
                     answer[0] = i;
                     answer[1] = j;
@@ -224,9 +204,9 @@ public class Test{
 
     }
 
-    public static void storeRegister(int qtyOfOranges, int qtyOfEggs, int qtyOfApples, int qtyOfWatermelons, int qtyOfBagels){
+    public static void storeRegister(int qtyOfOranges, int qtyOfEggs, int qtyOfApples, int qtyOfWatermelons, int qtyOfBagels) {
 
-        double orangePrice = 2.99/10, eggPrice = 1.69/12, applePrice = 1.00/3, watermelonPrice = 4.39, bagelPrice = 3.50/6; //Prices for each product
+        double orangePrice = 2.99 / 10, eggPrice = 1.69 / 12, applePrice = 1.00 / 3, watermelonPrice = 4.39, bagelPrice = 3.50 / 6; //Prices for each product
         double totalBill; //The total price for all purchased products
 
         double orangeTotal, eggsTotal, applesTotal, watermelonsTotal, bagelsTotal; //The total price for each purchased product
@@ -237,7 +217,7 @@ public class Test{
         watermelonsTotal = watermelonPrice * qtyOfWatermelons;
         bagelsTotal = bagelPrice * qtyOfBagels;
 
-        System.out.printf("\nOranges: $%.2f\n",orangeTotal);
+        System.out.printf("\nOranges: $%.2f\n", orangeTotal);
         System.out.printf("Eggs: $%.2f\n", eggsTotal);
         System.out.printf("Apples: $%.2f\n", applesTotal);
         System.out.printf("Watermelons: $%.2f\n", watermelonsTotal);
