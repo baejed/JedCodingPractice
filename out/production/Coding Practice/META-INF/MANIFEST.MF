@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: GUIpractice
+Main-Class: FirstYear2ndSem.ZianAccountLogin
 

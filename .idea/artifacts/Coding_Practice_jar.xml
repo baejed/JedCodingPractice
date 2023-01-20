@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Coding Practice:jar">
+    <output-path>$USER_HOME$/Desktop</output-path>
+    <root id="archive" name="Coding Practice.jar">
+      <element id="module-output" name="Coding Practice" />
+    </root>
+  </artifact>
+</component>
