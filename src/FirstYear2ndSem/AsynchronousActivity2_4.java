@@ -35,8 +35,8 @@ public class AsynchronousActivity2_4 {
 
         if(list1.length != list2.length) return false;
 
-        sort(list1);
-        sort(list2);
+        sortArrValues(list1);
+        sortArrValues(list2);
 
         for(int i = 0; i < list1.length; i++){
             if(list1[i] != list2[i]) return false;
@@ -46,7 +46,7 @@ public class AsynchronousActivity2_4 {
 
     }
 
-    public static void sort(int[] arr){
+    public static void sortArrValues(int[] arr){
 
         boolean errorPresent;
 
