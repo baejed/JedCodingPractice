@@ -2,48 +2,53 @@ import org.w3c.dom.ls.LSOutput;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Test {
 
-    public static void main(String args[]) throws AWTException, InterruptedException {
+    public static void main(String args[]) throws IOException {
 
-        Robot robot = new Robot();
+        int[] firstArray = {1, 2, 3, 4, 5, 6};
 
-        robot.keyPress(KeyEvent.VK_WINDOWS);
-        robot.keyPress(68);
+        int lastIndex = firstArray[0], temp;
 
-        robot.keyRelease(KeyEvent.VK_WINDOWS);
-        robot.keyRelease(68);
+        for (int i = 1; i < firstArray.length; i++) {
+            firstArray[i - 1] = firstArray[i];
+        }
 
-        robot.keyPress(17);
-        robot.keyPress(16);
-        robot.keyPress(27);
-        robot.keyRelease(17);
-        robot.keyRelease(16);
-        robot.keyRelease(27);
+        firstArray[firstArray.length - 1] = lastIndex;
 
-        robot.mouseMove(192, 684);
-        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        for (int i : firstArray) {
+            System.out.print(i + "\t");
+        }
 
-        robot.mouseMove(272, 124);
-        Thread.sleep(1000);
-        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        System.out.println();
 
-        Thread.sleep(500);
-        robot.mouseMove(188, 125);
-        robot.keyPress(17);
-        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        robot.keyRelease(17);
+        int firstIndex = firstArray[firstArray.length - 1];
 
+        for (int i = firstArray.length - 2; i >= 0; i--){
+            firstArray[i + 1] = firstArray[i];
+        }
 
+        firstArray[0] = firstIndex;
 
-        System.exit(0);
+        for (int i : firstArray) {
+            System.out.print(i + "\t");
+        }
+
+        
+
+        int lastIndex2 = firstArray[firstArray.length - 1];
+
+         for(int i=firstArray.length-1;i > 0;i--){
+             firstArray[i] = firstArray[i-1];
+         }
+         firstArray[0] = lastIndex2;
+
 
     }
 

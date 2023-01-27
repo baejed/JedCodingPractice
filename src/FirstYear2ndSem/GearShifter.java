@@ -32,6 +32,8 @@ public class GearShifter {
                 keyPresser.keyPress(38);
             }
 
+
+
             Thread.sleep(100);
 
             idleCheckingInterval++;
