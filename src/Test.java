@@ -7,48 +7,37 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.Random;
+import java.util.Arrays;
 
 public class Test {
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws IOException, AWTException, InterruptedException {
 
-        int[] firstArray = {1, 2, 3, 4, 5, 6};
+        //objects
+        Robot robot = new Robot();
+        File chrome = new File("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe");
+        Desktop desktop = Desktop.getDesktop();
 
-        int lastIndex = firstArray[0], temp;
+        //variables
+        String searchBarInput = "PORNHUB.COM";
 
-        for (int i = 1; i < firstArray.length; i++) {
-            firstArray[i - 1] = firstArray[i];
+        desktop.open(chrome);
+
+        Thread.sleep(100);
+
+        robot.keyPress(17);
+        robot.keyPress(16);
+        robot.keyPress(KeyEvent.VK_N);
+        robot.keyRelease(17);
+        robot.keyRelease(16);
+        robot.keyRelease(KeyEvent.VK_N);
+
+        for(int i = 0; i < searchBarInput.length(); i++){
+            robot.keyPress(searchBarInput.charAt(i));
+            robot.keyRelease(searchBarInput.charAt(i));
         }
 
-        firstArray[firstArray.length - 1] = lastIndex;
-
-        for (int i : firstArray) {
-            System.out.print(i + "\t");
-        }
-
-        System.out.println();
-
-        int firstIndex = firstArray[firstArray.length - 1];
-
-        for (int i = firstArray.length - 2; i >= 0; i--){
-            firstArray[i + 1] = firstArray[i];
-        }
-
-        firstArray[0] = firstIndex;
-
-        for (int i : firstArray) {
-            System.out.print(i + "\t");
-        }
-
-        
-
-        int lastIndex2 = firstArray[firstArray.length - 1];
-
-         for(int i=firstArray.length-1;i > 0;i--){
-             firstArray[i] = firstArray[i-1];
-         }
-         firstArray[0] = lastIndex2;
-
+        robot.keyPress(KeyEvent.VK_ENTER);
 
     }
 

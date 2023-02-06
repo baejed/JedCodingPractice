@@ -3,27 +3,25 @@ package FirstYear2ndSem;
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
 import java.security.Key;
 
 public class AutoPornHubOpener {
 
-    public static void main(String[] args) throws AWTException, InterruptedException {
+    public static void main(String[] args) throws AWTException, InterruptedException, IOException {
 
+        //objects
+        Robot robot = new Robot();
+        File chrome = new File("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe");
+        Desktop desktop = Desktop.getDesktop();
+
+        //variables
         String searchBarInput = "PORNHUB.COM";
 
-        Robot robot = new Robot();
+        desktop.open(chrome);
 
-        robot.keyPress(KeyEvent.VK_WINDOWS);
-        robot.keyPress(68);
-        robot.keyRelease(KeyEvent.VK_WINDOWS);
-        robot.keyRelease(68);
-
-        robot.mouseMove(192, 684);
-        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        Thread.sleep(1000);
+        Thread.sleep(100);
 
         robot.keyPress(17);
         robot.keyPress(16);
@@ -38,33 +36,6 @@ public class AutoPornHubOpener {
         }
 
         robot.keyPress(KeyEvent.VK_ENTER);
-
-//        robot.keyPress(KeyEvent.VK_P);
-//        robot.keyRelease(KeyEvent.VK_P);
-//        robot.keyPress(KeyEvent.VK_O);
-//        robot.keyRelease(KeyEvent.VK_O);
-//        robot.keyPress(KeyEvent.VK_R);
-//        robot.keyRelease(KeyEvent.VK_R);
-//        robot.keyPress(KeyEvent.VK_N);
-//        robot.keyRelease(KeyEvent.VK_N);
-//        robot.keyPress(KeyEvent.VK_H);
-//        robot.keyRelease(KeyEvent.VK_H);
-//        robot.keyPress(KeyEvent.VK_U);
-//        robot.keyRelease(KeyEvent.VK_U);
-//        robot.keyPress(KeyEvent.VK_B);
-//        robot.keyRelease(KeyEvent.VK_B);
-//        robot.keyPress(KeyEvent.VK_PERIOD);
-//        robot.keyRelease(KeyEvent.VK_PERIOD);
-//        robot.keyPress(KeyEvent.VK_C);
-//        robot.keyRelease(KeyEvent.VK_C);
-//        robot.keyPress(KeyEvent.VK_O);
-//        robot.keyRelease(KeyEvent.VK_O);
-//        robot.keyPress(KeyEvent.VK_M);
-//        robot.keyRelease(KeyEvent.VK_M);
-//        robot.keyPress(KeyEvent.VK_ENTER);
-//        robot.keyRelease(KeyEvent.VK_ENTER);
-
-
 
     }
 
