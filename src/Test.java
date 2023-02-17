@@ -9,35 +9,80 @@ import java.util.Scanner;
 import java.util.Random;
 import java.util.Arrays;
 
+import static FirstYear2ndSem.Startup.typeInSearchBar;
+
 public class Test {
+
+    static Robot robot;
+
+    static {
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public static void main(String args[]) throws IOException, AWTException, InterruptedException {
 
-        //objects
-        Robot robot = new Robot();
-        File chrome = new File("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe");
-        Desktop desktop = Desktop.getDesktop();
+        char[][] seatingPlan = new char[13][6];
+        Random rand = new Random();
+        Scanner scanner = new Scanner(System.in);
 
-        //variables
-        String searchBarInput = "PORNHUB.COM";
-
-        desktop.open(chrome);
-
-        Thread.sleep(100);
-
-        robot.keyPress(17);
-        robot.keyPress(16);
-        robot.keyPress(KeyEvent.VK_N);
-        robot.keyRelease(17);
-        robot.keyRelease(16);
-        robot.keyRelease(KeyEvent.VK_N);
-
-        for(int i = 0; i < searchBarInput.length(); i++){
-            robot.keyPress(searchBarInput.charAt(i));
-            robot.keyRelease(searchBarInput.charAt(i));
+        // Initialize seating plan with random assignments
+        for (int i = 0; i < 13; i++) {
+            for (int j = 0; j < 6; j++) {
+                if (i < 2) {
+                    // First class
+                    seatingPlan[i][j] = rand.nextBoolean() ? 'X' : '*';
+                } else if (i < 7) {
+                    // Business class
+                    seatingPlan[i][j] = rand.nextBoolean() ? 'X' : '*';
+                } else {
+                    // Economy class
+                    seatingPlan[i][j] = rand.nextBoolean() ? 'X' : '*';
+                }
+            }
         }
 
-        robot.keyPress(KeyEvent.VK_ENTER);
+        // Prompt user for ticket type and desired seat
+        System.out.print("Enter ticket type (1 for First Class, 2 for Business Class, 3 for Economy Class): ");
+        int ticketType = scanner.nextInt();
+        System.out.print("Enter desired seat (e.g. 3A): ");
+        String seat = scanner.next();
+
+        // Convert seat string to row and column indices
+        int row = Integer.parseInt(seat.substring(0, seat.length() - 1)) - 1;
+        int col = seat.charAt(seat.length() - 1) - 'A';
+
+        // Check if seat is available for the chosen ticket type
+        while (true) {
+            if (ticketType == 1 && row < 2 && seatingPlan[row][col] == '*') {
+                seatingPlan[row][col] = 'X';
+                break;
+            } else if (ticketType == 2 && row >= 2 && row < 7 && seatingPlan[row][col] == '*') {
+                seatingPlan[row][col] = 'X';
+                break;
+            } else if (ticketType == 3 && row >= 7 && seatingPlan[row][col] == '*') {
+                seatingPlan[row][col] = 'X';
+                break;
+            } else {
+                System.out.print("Seat not available. Please choose another seat: ");
+                seat = scanner.next();
+                row = Integer.parseInt(seat.substring(0, seat.length() - 1)) - 1;
+                col = seat.charAt(seat.length() - 1) - 'A';
+            }
+        }
+
+        // Print seating plan
+        System.out.println("           A B C D E F ");
+        for (int i = 0; i < 13; i++) {
+            System.out.print(String.format("Row %2d", i+1));
+            for (int j = 0; j < 6; j++) {
+                System.out.print(" " + seatingPlan[i][j]);
+            }
+            System.out.println();
+        }
 
     }
 

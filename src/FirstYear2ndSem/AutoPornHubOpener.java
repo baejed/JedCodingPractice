@@ -9,10 +9,22 @@ import java.security.Key;
 
 public class AutoPornHubOpener {
 
+    static Robot robot;
+
+    static {
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public AutoPornHubOpener() throws AWTException {
+    }
+
     public static void main(String[] args) throws AWTException, InterruptedException, IOException {
 
         //objects
-        Robot robot = new Robot();
         File chrome = new File("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe");
         Desktop desktop = Desktop.getDesktop();
 
@@ -21,14 +33,9 @@ public class AutoPornHubOpener {
 
         desktop.open(chrome);
 
-        Thread.sleep(100);
+        Thread.sleep(400);
 
-        robot.keyPress(17);
-        robot.keyPress(16);
-        robot.keyPress(KeyEvent.VK_N);
-        robot.keyRelease(17);
-        robot.keyRelease(16);
-        robot.keyRelease(KeyEvent.VK_N);
+        openIncognito();
 
         for(int i = 0; i < searchBarInput.length(); i++){
             robot.keyPress(searchBarInput.charAt(i));
@@ -36,6 +43,17 @@ public class AutoPornHubOpener {
         }
 
         robot.keyPress(KeyEvent.VK_ENTER);
+
+    }
+
+    public static void openIncognito(){
+
+        robot.keyPress(17);
+        robot.keyPress(16);
+        robot.keyPress(KeyEvent.VK_N);
+        robot.keyRelease(17);
+        robot.keyRelease(16);
+        robot.keyRelease(KeyEvent.VK_N);
 
     }
 
