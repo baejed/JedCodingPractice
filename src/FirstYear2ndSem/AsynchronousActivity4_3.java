@@ -21,7 +21,7 @@ public class AsynchronousActivity4_3 {
 
         }
 
-        System.out.println("Number of non-negative integers entered: " + counter.retrieveCounter());
+        System.out.println("Number of non-zero integers entered: " + counter.retrieveCounter());
 
     }
 

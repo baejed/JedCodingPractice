@@ -34,6 +34,7 @@ public class AsynchronousActivity4_1_2 {
         System.out.println("Rolling the five dice with 6, 20, 4, 8, and 12 sides: ");
         System.out.printf("Average of the five dice: %.2f\n\n", (double)dice.rollAllDice()/dice.numOfDice());
 
+
         dice = new SuperDice(1,6);
 
         for (int i = 0; i < 100; i++){
@@ -42,6 +43,7 @@ public class AsynchronousActivity4_1_2 {
 
         System.out.println("Rolling 100 single 6 sided dice: ");
         System.out.printf("Average: %.2f\n\n", (double)sum/100);
+
 
         sum = 0;
         dice = new SuperDice(3,6);
@@ -52,6 +54,7 @@ public class AsynchronousActivity4_1_2 {
 
         System.out.println("Rolling 100 three 6 sided dice: ");
         System.out.printf("Average: %.2f\n\n", (double)sum/100);
+
 
         sum = 0;
         dice = new SuperDice(3,20);
