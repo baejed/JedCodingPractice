@@ -56,10 +56,10 @@ public class DungeonBuilding {
     }
 
     public static void connectAdjacent(char[][] roomMap) {
-        int rooms = (roomMap.length / 3);
+        int sideLength = (roomMap.length / 3);
 
-        for (int i = 0; i < rooms; i++) {
-            for (int j = 0; j < rooms; j++) {
+        for (int i = 0; i < sideLength; i++) {
+            for (int j = 0; j < sideLength; j++) {
                 try {
                     if (roomMap[(i * 3) + 1][(j * 3) + 1] == ' ' && roomMap[(i * 3) + 1][(j * 3) + 4] == ' ') {
                         roomMap[(i * 3) + 1][(j * 3) + 2] = ' ';
