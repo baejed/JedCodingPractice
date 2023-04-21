@@ -34,7 +34,7 @@ public class DungeonBuilding {
                     for (int k = (i * 3); k < (i * 3) + 3; k++) {
                         for (int l = (j * 3); l < (j * 3) + 3; l++) {
                             if (k == (i * 3) + 1 && l == (j * 3) + 1) {
-                                map[k][l] = ' ';
+                                map[k][l] = '.';
                                 continue;
                             }
                             map[k][l] = '#';
@@ -61,14 +61,14 @@ public class DungeonBuilding {
         for (int i = 0; i < sideLength; i++) {
             for (int j = 0; j < sideLength; j++) {
                 try {
-                    if (roomMap[(i * 3) + 1][(j * 3) + 1] == ' ' && roomMap[(i * 3) + 1][(j * 3) + 4] == ' ') {
-                        roomMap[(i * 3) + 1][(j * 3) + 2] = ' ';
-                        roomMap[(i * 3) + 1][(j * 3) + 3] = ' ';
+                    if (roomMap[(i * 3) + 1][(j * 3) + 1] == '.' && roomMap[(i * 3) + 1][(j * 3) + 4] == '.') {
+                        roomMap[(i * 3) + 1][(j * 3) + 2] = '.';
+                        roomMap[(i * 3) + 1][(j * 3) + 3] = '.';
                     }
 
-                    if (roomMap[(j * 3) + 1][(i * 3) + 1] == ' ' && roomMap[(j * 3) + 4][(i * 3) + 1] == ' ') {
-                        roomMap[(j * 3) + 2][(i * 3) + 1] = ' ';
-                        roomMap[(j * 3) + 3][(i * 3) + 1] = ' ';
+                    if (roomMap[(j * 3) + 1][(i * 3) + 1] == '.' && roomMap[(j * 3) + 4][(i * 3) + 1] == '.') {
+                        roomMap[(j * 3) + 2][(i * 3) + 1] = '.';
+                        roomMap[(j * 3) + 3][(i * 3) + 1] = '.';
                     }
                 } catch (ArrayIndexOutOfBoundsException e) {
 
