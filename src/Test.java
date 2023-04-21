@@ -13,16 +13,26 @@ public class Test {
 
     public static void main(String args[]) throws IOException, InterruptedException {
 
-        List<Integer> list  = new ArrayList<>();
-
-        list.add(5);
-        list.add(1);
-        list.add(3);
-
-        Collections.sort(list);
-
-        for(int i = 0; i < list.size(); i++){
-            System.out.println(list.get(i));
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        for (int i = 0; i < t; i++) {
+            int[] x = new int[7];
+            for (int j = 0; j < 7; j++) {
+                x[j] = sc.nextInt();
+            }
+            int max_increase = -1;
+            for (int m = 0; m < 6; m++) {
+                int xm = x[m];
+                int increase = (int) Math.round((x[6] - xm) * 100.0 / xm);
+                if (increase > max_increase) {
+                    max_increase = increase;
+                }
+            }
+            if (max_increase > 0) {
+                System.out.printf("%d%% INCREASE!\n", max_increase);
+            } else {
+                System.out.println("DATA IS BIAS!");
+            }
         }
 
     }
