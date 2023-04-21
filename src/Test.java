@@ -1,22 +1,29 @@
 import org.w3c.dom.ls.LSOutput;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
-import java.util.Random;
-import java.util.Arrays;
+import java.util.*;
 
 import static FirstYear2ndSem.Startup.typeInSearchBar;
 
 public class Test {
 
-    public static void main(String args[]) throws IOException, AWTException, InterruptedException {
+    public static void main(String args[]) throws IOException, InterruptedException {
 
-        System.out.println(Math.random() * 30);
+        List<Integer> list  = new ArrayList<>();
+
+        list.add(5);
+        list.add(1);
+        list.add(3);
+
+        Collections.sort(list);
+
+        for(int i = 0; i < list.size(); i++){
+            System.out.println(list.get(i));
+        }
 
     }
 
