@@ -13,27 +13,13 @@ public class Test {
 
     public static void main(String args[]) throws IOException, InterruptedException {
 
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
-        for (int i = 0; i < t; i++) {
-            int[] x = new int[7];
-            for (int j = 0; j < 7; j++) {
-                x[j] = sc.nextInt();
-            }
-            int max_increase = -1;
-            for (int m = 0; m < 6; m++) {
-                int xm = x[m];
-                int increase = (int) Math.round((x[6] - xm) * 100.0 / xm);
-                if (increase > max_increase) {
-                    max_increase = increase;
-                }
-            }
-            if (max_increase > 0) {
-                System.out.printf("%d%% INCREASE!\n", max_increase);
-            } else {
-                System.out.println("DATA IS BIAS!");
-            }
-        }
+        String convert = "[[\".\",\".\",\".\",\".\",\".\",\".\",\".\",\".\",\".\"],[\"6\",\".\",\"9\",\".\",\".\",\"8\",\".\",\".\",\".\"],[\".\",\".\",\".\",\"4\",\".\",\"6\",\".\",\".\",\".\"],[\".\",\".\",\".\",\".\",\".\",\".\",\".\",\"1\",\".\"],[\".\",\".\",\".\",\".\",\"2\",\".\",\".\",\"3\",\".\"],[\".\",\"4\",\".\",\".\",\".\",\".\",\".\",\".\",\"4\"],[\"5\",\".\",\".\",\"6\",\".\",\".\",\".\",\".\",\".\"],[\".\",\".\",\".\",\".\",\".\",\".\",\".\",\".\",\".\"],[\".\",\".\",\".\",\".\",\"7\",\".\",\"6\",\".\",\".\"]]";
+
+        convert = convert.replace("[", "{");
+        convert = convert.replaceAll("]", "}");
+        convert = convert.replace("\"", "\'");
+
+        System.out.println(convert);
 
     }
 
