@@ -45,13 +45,13 @@ public class TwoStringsAttached {
                 currentSubstringLength = currentSubstring.length();
                 for (int k = 0; k < secondString.length() - currentSubstringLength + 1; k++) {
                     String secondSubstring = secondString.substring(k, k + currentSubstringLength);
-                    System.out.println("Comparing: " + " " + currentSubstring + " and " + secondSubstring);
+//                    System.out.println("Comparing: " + " " + currentSubstring + " and " + secondSubstring);
                     if(currentSubstring.equals(secondSubstring)){
                         hasAdded = true;
                         commonSubstrings.add(currentSubstring);
-                        System.out.println("\n--------------------------");
-                        System.out.println("Common Substring: " + currentSubstring);
-                        System.out.println("--------------------------\n");
+//                        System.out.println("\n--------------------------");
+//                        System.out.println("Common Substring: " + currentSubstring);
+//                        System.out.println("--------------------------\n");
                     }
                 }
                 if(!hasAdded)
