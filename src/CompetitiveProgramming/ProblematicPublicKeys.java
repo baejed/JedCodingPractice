@@ -51,8 +51,14 @@ public class ProblematicPublicKeys {
     public static int increaseToNextPrime(int currentPrime) {
         int potentialFactor;
 
+        if(currentPrime == 1)
+            return 2;
+
+        if(currentPrime == 2)
+            return 3;
+
         while (true) {
-            currentPrime++;
+            currentPrime += 2;
             potentialFactor = currentPrime - 1;
             while (true) {
                 if (currentPrime % potentialFactor == 0)

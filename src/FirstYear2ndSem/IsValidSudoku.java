@@ -27,6 +27,7 @@ public class IsValidSudoku {
 
     public static boolean isValidSudoku(char[][] board) {
 
+        //checks the lines
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board.length - 1; j++) {
                 for (int k = j + 1; k < board.length; k++) {
@@ -40,6 +41,7 @@ public class IsValidSudoku {
             }
         }
 
+        //checks the 3x3 matrices
         for (int i = 0; i < 9; i++) {
             HashSet<Character> occurredNums = new HashSet<>();
             for (int j = (i * 3) % 9; j < (i * 3) % 9 + 3; j++) {
