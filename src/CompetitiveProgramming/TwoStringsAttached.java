@@ -22,7 +22,7 @@ public class TwoStringsAttached {
         for(int i = 0; i < numOfInputs; i++){
             firstString = scanf.nextLine();
             secondString = scanf.nextLine();
-            if(i < numOfInputs - 1)
+            if(i < numOfInputs - 1 && numOfInputs != 1)
                 output.append(getLongestCommonSubstring(firstString, secondString) + "\n");
             else
                 output.append(getLongestCommonSubstring(firstString, secondString) + "");
