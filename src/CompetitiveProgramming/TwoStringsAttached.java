@@ -22,10 +22,13 @@ public class TwoStringsAttached {
         for(int i = 0; i < numOfInputs; i++){
             firstString = scanf.nextLine();
             secondString = scanf.nextLine();
-            output.append(getLongestCommonSubstring(firstString, secondString) + "\n");
+            if(i < numOfInputs - 1)
+                output.append(getLongestCommonSubstring(firstString, secondString) + "\n");
+            else
+                output.append(getLongestCommonSubstring(firstString, secondString) + "");
         }
 
-        System.out.println(output);
+        System.out.print(output);
 
     }
 
@@ -37,18 +40,22 @@ public class TwoStringsAttached {
 
         for (int i = 0; i < firstString.length(); i++) {
             for (int j = i + 1; j < firstString.length() + 1; j++) {
+                boolean hasAdded = false;
                 currentSubstring = firstString.substring(i, j);
                 currentSubstringLength = currentSubstring.length();
                 for (int k = 0; k < secondString.length() - currentSubstringLength + 1; k++) {
                     String secondSubstring = secondString.substring(k, k + currentSubstringLength);
-                    //System.out.println("Comparing: " + " " + currentSubstring + " and " + secondSubstring);
+                    System.out.println("Comparing: " + " " + currentSubstring + " and " + secondSubstring);
                     if(currentSubstring.equals(secondSubstring)){
+                        hasAdded = true;
                         commonSubstrings.add(currentSubstring);
-                        //System.out.println("\n--------------------------");
-                        //System.out.println("Common Substring: " + currentSubstring);
-                        //System.out.println("--------------------------\n");
+                        System.out.println("\n--------------------------");
+                        System.out.println("Common Substring: " + currentSubstring);
+                        System.out.println("--------------------------\n");
                     }
                 }
+                if(!hasAdded)
+                    break;
             }
         }
 
