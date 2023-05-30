@@ -6,7 +6,7 @@ public class FinalLabExam {
     public static void main(String[] args) {
 
         Scanner scanf = new Scanner(System.in);
-        Hangman hangman = new Hangman("JosephTristanSubong", 3);
+        Hangman hangman = new Hangman("YuukiAraya", 3);
 
         System.out.println("Welcome to Joseph's Hangman");
         System.out.println("\nDisguised word: " + hangman.getDisguisedWord() + "\n");

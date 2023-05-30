@@ -14,29 +14,18 @@ public class Test {
     public static void main(String args[]) throws IOException, InterruptedException {
 
         Scanner scanf = new Scanner(System.in);
+        String name;
+        String message = "Thank you";
+        StringBuilder builder = new StringBuilder();
 
-        System.out.println(scanf.nextLine() + "\n" + scanf.nextLine());
+        name = scanf.nextLine();
 
-    }
+        do{
+            builder.append(message + " " + name + "\n");
+            name = scanf.nextLine();
+        }while(!name.equals("0"));
 
-    public static int addDigits(int num) {
-
-        int sum = 0;
-
-        while(true){
-
-            if(num == 0 && sum < 10) break;
-            if(num == 0) {
-                num = sum;
-                sum = 0;
-            }
-
-            sum += num%10;
-            num /= 10;
-
-        }
-
-        return sum;
+        System.out.println(builder);
 
     }
 

@@ -1,4 +1,4 @@
-package FirstYear2ndSem;
+package Leetcodes;
 
 import java.util.HashMap;
 import java.util.HashSet;
