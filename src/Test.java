@@ -5,28 +5,38 @@ import java.awt.event.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 import static FirstYear2ndSem.Startup.typeInSearchBar;
 
 public class Test {
 
-    public static void main(String args[]) throws IOException, InterruptedException {
+    public static void main(String args[]) throws IOException, InterruptedException, NoSuchAlgorithmException {
 
         Scanner scanf = new Scanner(System.in);
-        String name;
-        String message = "Thank you";
-        StringBuilder builder = new StringBuilder();
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        String originalString = scanf.nextLine();
 
-        name = scanf.nextLine();
+        byte[] encodedhash = digest.digest(originalString.getBytes(StandardCharsets.UTF_8));
 
-        do{
-            builder.append(message + " " + name + "\n");
-            name = scanf.nextLine();
-        }while(!name.equals("0"));
+        String hash = bytesToHex(encodedhash);
 
-        System.out.println(builder);
+        System.out.println(hash);
+    }
 
+    private static String bytesToHex(byte[] hash) {
+        StringBuilder hexString = new StringBuilder(2 * hash.length);
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if(hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+        return hexString.toString();
     }
 
 
