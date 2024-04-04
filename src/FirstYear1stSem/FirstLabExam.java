@@ -1,3 +1,5 @@
+package FirstYear1stSem;
+
 import java.util.Random;
 
 public class FirstLabExam {

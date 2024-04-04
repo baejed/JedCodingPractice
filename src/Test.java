@@ -1,6 +1,7 @@
 import org.w3c.dom.ls.LSOutput;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.FileWriter;
@@ -14,29 +15,47 @@ import static FirstYear2ndSem.Startup.typeInSearchBar;
 
 public class Test {
 
-    public static void main(String args[]) throws IOException, InterruptedException, NoSuchAlgorithmException {
+    public static void main(String args[]) throws IOException, InterruptedException, NoSuchAlgorithmException, AWTException {
 
         Scanner scanf = new Scanner(System.in);
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        String originalString = scanf.nextLine();
+        int num;
 
-        byte[] encodedhash = digest.digest(originalString.getBytes(StandardCharsets.UTF_8));
+        System.out.print("Enter a number: ");
+        num = scanf.nextInt();
 
-        String hash = bytesToHex(encodedhash);
+        int fib1 = 0;
+        int fib2 = 1;
 
-        System.out.println(hash);
+        System.out.print(fib1 + " " + fib2);
+
+        while(true){
+            int currentSum = fib1 + fib2;
+            if(currentSum >= num) break;
+            System.out.print(" " + currentSum);
+            fib1 = fib2;
+            fib2 = currentSum;
+        }
+
     }
 
     private static String bytesToHex(byte[] hash) {
         StringBuilder hexString = new StringBuilder(2 * hash.length);
         for (int i = 0; i < hash.length; i++) {
             String hex = Integer.toHexString(0xff & hash[i]);
-            if(hex.length() == 1) {
+            if (hex.length() == 1) {
                 hexString.append('0');
             }
             hexString.append(hex);
         }
         return hexString.toString();
+    }
+
+    public static double Compute_half_life(double NT, double NO, double T) {
+        if (NT >= NO || (NT == 0 || NO == 0)) return Double.NaN;
+        double upper = (-1.0 * T) * (Math.log(2.0));
+        double lower = (Math.log(NT) - Math.log(NO));
+
+        return (double) Math.round((upper / lower) * 10000) / 10000;
     }
 
 

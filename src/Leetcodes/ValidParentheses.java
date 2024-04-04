@@ -2,63 +2,60 @@ package Leetcodes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class ValidParentheses {
 
     public static void main(String[] args) {
 
-        System.out.println(isValid("[([]])"));
-
+        System.out.println(isValid("{(({[})[])}"));
+        Stack<String> stack = new Stack<>();
     }
 
     public static boolean isValid(String s) {
-        if (s.length() % 2 != 0)
-            return false;
+        Stack<Character> stack1 = new Stack<>();
+        Stack<Character> stack2 = new Stack<>();
 
-        List<Character> parentheses = new ArrayList<>();
-        List<Character> openParentheses = new ArrayList<>();
-
-        openParentheses.add(')');
-        openParentheses.add('}');
-        openParentheses.add('}');
+        if(s.length()%2 != 0) return false;
 
         for (int i = 0; i < s.length(); i++) {
-            parentheses.add(s.charAt(i));
+            stack1.push(s.charAt(i));
         }
 
-        while (!parentheses.isEmpty()) {
-            if (openParentheses.contains(parentheses.get(0)))
-                return false;
+        int lastSize = stack1.size();
+        int currentSize = stack1.size();
 
-            for (int i = parentheses.size() - 1; i > 0; i--) {
+        while (true) {
 
-                if ((parentheses.get(0) == '(' && parentheses.get(i) == ')') && i % 2 != 0) {
-                    parentheses.remove(i);
-                    parentheses.remove(0);
-                    i = parentheses.size();
-                    continue;
-                }
+            if (stack2.isEmpty()) stack2.push(stack1.pop());
 
-                if ((parentheses.get(0) == '[' && parentheses.get(i) == ']') && i % 2 != 0) {
-                    parentheses.remove(i);
-                    parentheses.remove(0);
-                    i = parentheses.size();
-                    continue;
-                }
-
-                if ((parentheses.get(0) == '{' && parentheses.get(i) == '}') && i % 2 != 0) {
-                    parentheses.remove(i);
-                    parentheses.remove(0);
-                    i = parentheses.size();
-                    continue;
-                }
-
-                if (i == 1)
-                    return false;
+            if (
+                    (stack1.peek() == '(' && stack2.peek() == ')') ||
+                    (stack1.peek() == '{' && stack2.peek() == '}') ||
+                    (stack1.peek() == '[' && stack2.peek() == ']')
+            ){
+                stack1.pop();
+                stack2.pop();
+            }else{
+                stack2.push(stack1.pop());
             }
+
+            if(stack1.isEmpty()){
+                while(!stack2.isEmpty()){
+                    stack1.push(stack2.pop());
+                }
+                currentSize = stack1.size();
+                if(lastSize == currentSize) break;
+                lastSize = currentSize;
+            }
+
+            if(stack1.isEmpty() && stack2.isEmpty()) return true;
+
         }
 
-        return true;
+        return false;
+
+
     }
 
 }
