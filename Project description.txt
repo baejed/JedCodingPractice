@@ -1,0 +1,11 @@
+Problem: Write a linked list program that would accept two sets of character entries.  
+	Entry for each list should only terminate when the ESCAPE key is pressed.  
+	The program should arrange and display the entries in each list in ascending order.  
+	The program should then merge the two lists, still in ascending order, and should only 
+	make one pass through each list during the merging process.  The program should accept 
+	duplicate entries and should not accept non-alphabet entries.
+
+Resolution scale, and layout should be at 100% (preferably);
+Java version: 18.0.2;
+Terminates the entry for each linked list with ESCAPE key;
+Press ENTER to submit entry (just like a console);
